@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" href="web.png" type="image/x-icon">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+    <title>My Home Page</title>
+    
+    <style>
+        body {
+            position: relative;
+            background-image: linear-gradient(195deg, rgb(177, 166, 166) -20%, rgb(98, 98, 98) 40%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            width: 100%;
+            color: #fff;
+            /* overflow-y: hidden; */
+            cursor: url("shinchan.png"), auto;
+        }
+
+        ::-webkit-scrollbar {
+            display: none;
+        }
+
+        ::selection {
+            background-color: black;
+        }
+
+        .header {
+            width: 100%;
+            height: 8vh;
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+        }
+
+        /* .header .brand{ padding: 10px;} */
+        .brand h1 {
+            font-size: 18px;
+            font-weight: 800;
+            color: #fff;
+            padding: 10px 16px;
+            margin: 0;
+            font-family: 'Lucida Sans';
+        }
+
+        .header .menu {
+            margin-left: auto;
+
+        }
+
+        .header .menu ul {
+            float: right;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            margin: 0;
+        }
+
+        .header .menu ul li {
+            width: auto;
+            padding: 10px 16px;
+            display: inherit;
+        }
+
+        .header .menu ul li a {
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 400;
+            color: #fff;
+            transition: 0.4s ease;
+        }
+
+        .header .menu ul li a:hover {
+            color: black;
+            cursor: url(khaby.png), auto;
+        }
+
+        .social-media {
+            background-color: #fff !important;
+            color: grey !important;
+            border-radius: 2px;
+            padding: 1px 7px 1px 10px;
+            font-weight: bold !important;
+            font-size: 15px !important;
+            transition: 0.6s ease;
+        }
+
+        .social-media:hover {
+            background-color: rgb(29, 26, 184) !important;
+            color: #fff !important;
+        }
+
+        .container-fluid h2 {
+            font-weight: 300;
+        }
+
+        .container-fluid .text {
+            width: 575px;
+            margin: 0 auto;
+            font-weight: 200;
+        }
+
+        .container-fluid .slides-view {
+            display: grid;
+            grid-gap: 20px;
+            grid-template-columns: auto auto auto;
+            padding: 2rem 4rem;
+            margin: 0 auto;
+            max-width: 850px;
+            transition: 1.5s ease;
+        }
+
+        .container-fluid .slides-view .box {
+            text-align: center;
+            transition: 0.5s ease-in-out;
+        }
+
+        .container-fluid .slides-view .box:nth-child(n+7) {
+            display: none;
+        }
+
+        /* .container-fluid .slides-view .box:hover {
+
+            animation: fadeEffect 1s infinite;
+        } */
+
+        .container-fluid .slides-view .box p {
+            font-size: 14px;
+            font-weight: 300;
+            margin: 0 !important;
+        }
+
+        .container-fluid .slides-view .box .img {
+            width: 100%;
+            height: 160px;
+            display: inline-block;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .container-fluid .slides-view .box:hover .img img {
+            filter: unset !important;
+            vertical-align: middle;
+            transform: scale(1.2);
+        }
+
+        .container-fluid .slides-view .box .img h4 {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20px;
+        }
+
+        .container-fluid .slides-view .box .img img {
+            border-radius: 4px;
+            filter: grayscale(1);
+            width: inherit;
+            height: -webkit-fill-available;
+            object-fit: cover;
+            transition-duration: 700ms;
+            /* filter: brightness(65%); */
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+
+        .footer {
+            font-size: 12px;
+            position: absolute !important;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .nav-link {
+            color: #fff !important;
+        }
+
+        @media screen and (max-width: 991px) {
+            .navbar-collapse {
+                background: rgb(107 100 100 / 97%) !important;
+                z-index: 999 !important;
+            }
+            .container-fluid .slides-view {
+                margin-bottom: 6rem;
+            }
+
+            .slide-btn {
+            position: absolute;
+            left: 50%;            
+            flex-direction: row !important;
+            transform: translate(-15%) !important;
+            
+        }
+
+            .slide-btn .square {
+                margin-top: unset !important;
+                margin-left: 2rem;
+                transition-duration: 0.6s;
+            }
+        }
+
+        @media screen and (max-width: 760px) {
+            .container-fluid .slides-view {
+                grid-gap: 40px;
+                grid-template-columns: repeat(2, 1fr);
+                padding: 2rem 4rem;
+                margin: 0 auto;
+                max-width: 850px;
+            }
+        }
+
+        @media screen and (max-width: 512px) {
+            .container-fluid .slides-view {
+                grid-gap: 40px;
+                grid-template-columns: repeat(1, 1fr);
+                padding: 2rem 4rem;
+                
+            }
+            
+        }
+
+        .slide-btn {
+            position: absolute;
+            right: 3%;
+            display: flex;
+            flex-direction: column;
+            /* top: 50%; */
+            transform: translate(0, -245%);
+            cursor: pointer;
+        }
+
+        .slide-btn .square {
+            width: 10px;
+            height: 10px;
+            background: rgb(232, 232, 232);
+            transform: rotate(45deg);
+            margin-top: 2rem;
+            transition-duration: 0.6s;
+        }
+
+        .actived {
+            background: rgb(52 220 247) !important;
+            box-shadow: 0px 0px 9px #c3dde2;
+        }
+
+        .add_keyframe {
+            animation: fadeEffect 0.6s;
+        }
+
+        /* animation: fadeEffect 3s infinite; */
+        @keyframes fadeEffect {
+            0% {
+                filter: blur(0px);
+            }
+
+            50% {
+                filter: blur(5px);
+                opacity: 0.5;
+            }
+
+            100% {
+                filter: blur(10px);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light header ">
+        <!-- <div class="container-fluid"> -->
+        <div class="brand">
+            <h1>My Home Page</h1>
+        </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="menu collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li><a href="#">Tour</a></li>
+                <li><a href="#">Upgrade</a></li>
+                <li><a href="#">Help</a></li>
+                <li><a href="#">Explore</a></li>
+                <li><a class="social-media" href="#">f</a></li>
+            </ul>
+        </div>
+        <!-- </div> -->
+    </nav>
+
+    <Section>
+        <div class="container-fluid py-4">
+
+            <div class="text-center">
+                <h2>It's very easy to be different</h2>
+                <div class="row">
+                    <p class="text mt-1 mb-4">Simplicity is not the absence of clutter; that's consequence of
+                        Simplicity.
+                        It's somehow
+                        essentially describing the place of an object and product. The absence of clutter is
+                        just a clutter-free product.</p>
+                </div>
+            </div>
+            <div class="slides-view pb-3">
+                <div class="box">
+                    <div class="img mb-3">
+                        <img src="https://c4.wallpaperflare.com/wallpaper/246/739/689/digital-digital-art-artwork-illustration-abstract-hd-wallpaper-thumb.jpg"
+                            alt="">
+                        <h4>My Slide 1</h4>
+                    </div>
+                    <p><strong>Designmodo,</strong> Web Development</p>
+                </div>
+                <div class="box">
+                    <div class="img mb-3">
+                        <img src="https://cdn.stocksnap.io/img-thumbs/960w/pink-blossoms_1WWRP96TDA.jpg"
+                            alt="">
+                        <h4>My Slide 2</h4>
+                    </div>
+                    <p><strong>Designmodo,</strong> Web Development</p>
+                </div>
+                <div class="box">
+                    <div class="img mb-3">
+                        <img src="https://webneel.com/wallpaper/sites/default/files/images/08-2018/2-nature-wallpaper-grass.preview.jpg"
+                            alt="">
+                        <h4>My Slide 3</h4>
+                    </div>
+                    <p><strong>Designmodo,</strong> Web Development</p>
+                </div>
+                <div class="box">
+                    <div class="img mb-3">
+                        <img src="https://cdn.hovia.com/app/uploads/Green-Tropical-Plant-Wallpaper-Mural-Room-820x532.jpg"
+                            alt="">
+                        <h4>My Slide 4</h4>
+                    </div>
+                    <p><strong>Designmodo,</strong> Web Development</p>
+                </div>
+                <div class="box">
+                    <div class="img mb-3">
+                        <img src="http://m.gettywallpapers.com/wp-content/uploads/2020/01/Joker-Wallpaper-For-PC-1536x864.jpg"
+                            alt="">
+                        <h4>My Slide 5</h4>
+                    </div>
+                    <p><strong>Designmodo,</strong> Web Development</p>
+                </div>
+                <div class="box">
+                    <div class="img mb-3">
+                        <img src="https://www.gratex.in/uploads/ZARA/corporate-office-wallpapers-inspirational-high-quality-modern-wall-paper-murals-pictures-photos-coverings-designs-custom-sizes-order-online-best-price1.jpg"
+                            alt="">
+                        <h4>My Slide 6</h4>
+                    </div>
+                    <p><strong>Designmodo,</strong> Web Development</p>
+                </div>
+
+                <div class="box">
+                    <div class="img mb-3">
+                        <img src="https://img.freepik.com/free-photo/cool-geometric-triangular-figure-neon-laser-light-great-backgrounds-wallpapers_181624-9331.jpg?w=2000"
+                            alt="">
+                        <h4>My Slide 7</h4>
+                    </div>
+                    <p><strong>Designmodo,</strong> Web Development</p>
+                </div>
+                <div class="box">
+                    <div class="img mb-3">
+                        <img src="https://img.freepik.com/free-vector/colorful-palm-silhouettes-background_23-2148541792.jpg?w=2000"
+                            alt="">
+                        <h4>My Slide 8</h4>
+                    </div>
+                    <p><strong>Designmodo,</strong> Web Development</p>
+                </div>
+                <div class="box">
+                    <div class="img mb-3">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWPrM9cBliDy1Ckb3THIeim9NquAEbNS2mfg&usqp=CAU"
+                            alt="">
+                        <h4>My Slide 9</h4>
+                    </div>
+                    <p><strong>Designmodo,</strong> Web Development</p>
+                </div>
+                <div class="box">
+                    <div class="img mb-3">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyxoqFxUu0n0l8gFDHx2GxkIICbe9Bu5k8qw&usqp=CAU"
+                            alt="">
+                        <h4>My Slide 10</h4>
+                    </div>
+                    <p><strong>Designmodo,</strong> Web Development</p>
+                </div>
+                <div class="box">
+                    <div class="img mb-3">
+                        <img src="https://static.joandjudy.com/media/image/0c/dc/3f/joandjudy_wallpaperside_2207_header.jpg"
+                            alt="">
+                        <h4>My Slide 11</h4>
+                    </div>
+                    <p><strong>Designmodo,</strong> Web Development</p>
+                </div>
+                <div class="box">
+                    <div class="img mb-3">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVfBRqEYZ6RBCKNYfYxh82Krfy41X3AUikHA&usqp=CAU"
+                            alt="">
+                        <h4>My Slide 12</h4>
+                    </div>
+                    <p><strong>Designmodo,</strong> Web Development</p>
+                </div>
+
+                <div class="box">
+                    <div class="img mb-3">
+                        <img src="https://c4.wallpaperflare.com/wallpaper/246/739/689/digital-digital-art-artwork-illustration-abstract-hd-wallpaper-thumb.jpg"
+                            alt="">
+                        <h4>My Slide 13</h4>
+                    </div>
+                    <p><strong>Designmodo,</strong> Web Development</p>
+                </div>
+                <div class="box">
+                    <div class="img mb-3">
+                        <img src="https://cdn.stocksnap.io/img-thumbs/960w/pink-blossoms_1WWRP96TDA.jpg"
+                            alt="">
+                        <h4>My Slide 14</h4>
+                    </div>
+                    <p><strong>Designmodo,</strong> Web Development</p>
+                </div>
+                <div class="box">
+                    <div class="img mb-3">
+                        <img src="https://webneel.com/wallpaper/sites/default/files/images/08-2018/2-nature-wallpaper-grass.preview.jpg"
+                            alt="">
+                        <h4>My Slide 15</h4>
+                    </div>
+                    <p><strong>Designmodo,</strong> Web Development</p>
+                </div>
+                <div class="box">
+                    <div class="img mb-3">
+                        <img src="https://cdn.hovia.com/app/uploads/Green-Tropical-Plant-Wallpaper-Mural-Room-820x532.jpg"
+                            alt="">
+                        <h4>My Slide 16</h4>
+                    </div>
+                    <p><strong>Designmodo,</strong> Web Development</p>
+                </div>
+                <div class="box">
+                    <div class="img mb-3">
+                        <img src="http://m.gettywallpapers.com/wp-content/uploads/2020/01/Joker-Wallpaper-For-PC-1536x864.jpg"
+                            alt="">
+                        <h4>My Slide 17</h4>
+                    </div>
+                    <p><strong>Designmodo,</strong> Web Development</p>
+                </div>
+                <div class="box">
+                    <div class="img mb-3">
+                        <img src="https://www.gratex.in/uploads/ZARA/corporate-office-wallpapers-inspirational-high-quality-modern-wall-paper-murals-pictures-photos-coverings-designs-custom-sizes-order-online-best-price1.jpg"
+                            alt="">
+                        <h4>My Slide 18</h4>
+                    </div>
+                    <p><strong>Designmodo,</strong> Web Development</p>
+                </div>
+            </div>
+
+            <div class="slide-btn">
+                <span id="s1" class="square actived"></span>
+                <span id="s2" class="square"></span>
+                <span id="s3" class="square"></span>
+            </div>
+        </div>
+
+    </Section>
+
+    <footer>
+        <div class="footer d-flex align-items-center px-3 pb-2">
+            <strong>2015 Lia Hulu -</strong> All rights reserved.
+            <img class="ms-auto" src="download.png" alt="download-btn" width="18px" height="22px">
+        </div>
+    </footer>
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+
+
+        $(".square").click(function () {
+            $(".square").removeClass("actived");
+            $(this).addClass('actived');
+            if ($(this).attr('id') == 's1') {
+                $(".box").slice(0, 6).show();
+                $(".box").slice(6, 18).hide();
+            }
+            else if ($(this).attr('id') == 's2') {
+                $(".box").slice(0, 6).hide();
+                $(".box").slice(6, 12).show();
+                $(".box").slice(12, 18).hide();
+            } else {
+                $(".box").slice(0, 12).hide();
+                $(".box").slice(12, 18).show();
+            }
+        });
+        var len = 2;
+        const start = 0, end = 18;
+        let status = true;
+
+        function callme() {
+
+            $(".slides-view").mouseover(function () {
+                status = false;
+            });
+
+            $(".slides-view").mouseout(function () {
+                status = true;                
+            });
+
+            if(status === true){
+                $('.box').addClass('add_keyframe');
+                if (len > 3) {
+                    len = 1;
+                } else {
+
+                    if (len == 1) {
+                        $(".box").slice(0, 6).show();
+                        $(".box").slice(6, 12).hide();
+                        $(".box").slice(12, 18).hide();
+
+                        $(".square").removeClass("actived");
+                        $("#s1").addClass('actived');
+                    }
+                    else if (len == 2) {
+                        $(".box").slice(0, 6).hide();
+                        $(".box").slice(6, 12).show();
+                        $(".box").slice(12, 18).hide();
+
+                        $(".square").removeClass("actived");
+                        $("#s2").addClass('actived');
+                    }
+                    else {
+                        $(".box").slice(0, 6).hide();
+                        $(".box").slice(6, 12).hide();
+                        $(".box").slice(12, 18).show();
+
+                        $(".square").removeClass("actived");
+                        $("#s3").addClass('actived');
+                    }
+
+                    len++;
+
+                }
+            }
+            setTimeout(callme, 5000);
+
+        }
+
+        setTimeout(callme, 5000);
+
+    });
+
+</script>
+
+</html>
